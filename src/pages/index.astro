@@ -1,8 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Home";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-
+  <div class="py-16">
+    <div class="max-w-2xl flex flex-col gap-4">
+      <h1 class="text-5xl font-semibold">Free and open engineering education.</h1>
+      <p>
+        Abhiyanta is an extensive and in-depth collection of engineering lessons. It is openly
+        accessible to everyone.
+      </p>
+    </div>
+  </div>
 </BaseLayout>
