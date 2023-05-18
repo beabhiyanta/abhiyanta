@@ -1,0 +1,35 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+let chapters = await Astro.glob("../pages/chapter/*.md");
+chapters = chapters.filter((chapter) => chapter.frontmatter.module === frontmatter.module);
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="py-16">
+    <h1>{frontmatter.title}</h1>
+    <div class="py-16 grid md:grid-cols-6 gap-8">
+      <aside class="md:col-span-2 rounded border p-4">
+        <ul>
+          {
+            chapters.map((chapter) => (
+              <a
+                class={
+                  chapter.frontmatter.title === frontmatter.title
+                    ? "list-item font-semibold text-blue-600"
+                    : "list-item"
+                }
+                href={chapter.url}
+              >
+                {chapter.frontmatter.title}
+              </a>
+            ))
+          }
+        </ul>
+      </aside>
+      <div class="md:col-span-4 flex flex-col gap-1">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

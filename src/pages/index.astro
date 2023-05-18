@@ -1,16 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Home";
+const pageTitle = "Abhiyanta - Engineering simplified.";
+const image = "";
+const modules = await Astro.glob("./module/*.md");
+const chapters = await Astro.glob("./chapter/*.md");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="py-16">
-    <div class="max-w-2xl flex flex-col gap-4">
-      <h1 class="text-5xl font-semibold">Free and open engineering education</h1>
+  <div class="py-16 grid sm:grid-cols-3">
+    <div class="sm:col-span-2 flex flex-col gap-4">
+      <h1>Free and open engineering education</h1>
       <p>
         This website is an extensive and in-depth collection of engineering lessons created by folks
         at Abhiyanta. It is openly accessible to everyone.
       </p>
+    </div>
+    <div class="sm:col-span-1">
+      <img src={image} />
+    </div>
+  </div>
+  <div>
+    <h2>Modules</h2>
+    <div class="py-4 grid md:grid-cols-3 gap-8">
+      {
+        modules.map((module) => (
+          <div class="border-t-4 py-2 flex flex-col gap-1">
+            <h3>
+              <a href={module.url}>{module.frontmatter.title}</a>
+            </h3>
+            <p class="font-semibold">
+              {
+                chapters.filter(
+                  (chapter) => chapter.frontmatter.module === module.frontmatter.title
+                ).length
+              }
+              chapters
+            </p>
+            <p>{module.frontmatter.description}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </BaseLayout>

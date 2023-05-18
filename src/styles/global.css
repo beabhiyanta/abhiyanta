@@ -2,7 +2,7 @@ body {
   color: #666;
 }
 
-h1,
+.container h1,
 h2,
 h3,
 h4,
@@ -11,10 +11,26 @@ h6 {
   color: #222;
 }
 
-a {
-  color: #333 !important;
+.container h1 {
+  @apply text-5xl font-semibold;
 }
 
-a:hover {
+.container h2 {
+  @apply text-3xl font-semibold;
+}
+
+.container h3 {
+  @apply text-xl font-semibold;
+}
+
+.container a {
+  color: #333;
+}
+
+.container a:hover {
   @apply rounded outline;
+}
+
+.container a:active {
+  color: #666;
 }
