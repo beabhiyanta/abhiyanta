@@ -2,7 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Abhiyanta - Engineering simplified.";
 const image = "";
-const modules = await Astro.glob("./module/*.md");
+let modules = await Astro.glob("./module/*.md");
+modules = modules.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 const chapters = await Astro.glob("./chapter/*.md");
 ---
 
@@ -24,7 +25,10 @@ const chapters = await Astro.glob("./chapter/*.md");
     <div class="py-4 grid md:grid-cols-3 gap-8">
       {
         modules.map((module) => (
-          <div class="border-t-4 py-2 flex flex-col gap-1">
+          <div
+            class="border-t-4 py-2 flex flex-col gap-1"
+            style={`border-color: ${module.frontmatter.color}`}
+          >
             <h3>
               <a href={module.url}>{module.frontmatter.title}</a>
             </h3>

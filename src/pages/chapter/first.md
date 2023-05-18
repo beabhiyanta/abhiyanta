@@ -1,8 +1,12 @@
 ---
+order: 1
 layout: "../../layouts/ChapterLayout.astro"
-module: "Foo"
-title: "Bar"
-description: "Lorem Ipsum Dolor Sit Amet."
+module: "Standardizing Development Environment"
+date: 18-01-2023
+title: "Demo Chapter"
+description: "This chapter is created for demonstration purposes."
 ---
 
-Lorem Ipsum Dolor Sit Amet.
+## Demo Sub-heading
+
+This chapter is created for demonstration purposes.

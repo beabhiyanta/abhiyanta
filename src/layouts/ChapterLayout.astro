@@ -3,10 +3,18 @@ import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 let chapters = await Astro.glob("../pages/chapter/*.md");
 chapters = chapters.filter((chapter) => chapter.frontmatter.module === frontmatter.module);
+const modules = await Astro.glob("../pages/module/*.md");
+const module = modules.find((module) => module.frontmatter.title === frontmatter.module);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="py-16">
+    <label
+      class="block w-fit px-4 mb-2 rounded text-gray-800"
+      style={`background-color: ${module ? module.frontmatter.color : "#fff"}`}
+    >
+      Module {frontmatter.order}
+    </label>
     <h1>{frontmatter.title}</h1>
     <div class="py-16 grid md:grid-cols-6 gap-8">
       <aside class="md:col-span-2 rounded border p-4">
