@@ -30,6 +30,7 @@ const chapters = await Astro.glob("./chapter/*.md");
             style={`border-color: ${module.frontmatter.color}`}
           >
             <h3>
+              <span>{module.frontmatter.order}.</span>
               <a href={module.url}>{module.frontmatter.title}</a>
             </h3>
             <p class="font-semibold">

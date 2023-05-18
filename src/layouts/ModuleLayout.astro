@@ -21,7 +21,10 @@ chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
           chapters.map((chapter) => (
             <div>
               <h3>
-                <a href={chapter.url}>{chapter.frontmatter.title}</a>
+                <>
+                  <span>{chapter.frontmatter.order}.</span>
+                  <a href={chapter.url}>{chapter.frontmatter.title}</a>
+                </>
               </h3>
               <p>{chapter.frontmatter.description}</p>
             </div>
