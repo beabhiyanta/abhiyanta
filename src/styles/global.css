@@ -28,9 +28,5 @@ h6 {
 }
 
 .container a:hover {
-  @apply rounded outline;
-}
-
-.container a:active {
-  @apply text-gray-500;
+  @apply text-[#1769c9];
 }
