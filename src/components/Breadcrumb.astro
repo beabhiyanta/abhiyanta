@@ -1,0 +1,16 @@
+---
+const { path } = Astro.props;
+const currentPage = path[path.length - 1];
+path.pop();
+---
+
+<div class="flex gap-2">
+  {
+    path.map((page: { url: string; title: string }) => (
+      <>
+        <a href={page.url}>{page.title}</a>-
+      </>
+    ))
+  }
+  <a href={currentPage.url}>{currentPage.title}</a>
+</div>
