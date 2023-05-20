@@ -4,13 +4,13 @@ const currentPage = path[path.length - 1];
 path.pop();
 ---
 
-<div class="flex gap-2">
+<span>
   {
     path.map((page: { url: string; title: string }) => (
       <>
-        <a href={page.url}>{page.title}</a>-
+        <a href={page.url}>{page.title}</a> &#8594;
       </>
     ))
   }
-  <a href={currentPage.url}>{currentPage.title}</a>
-</div>
+  <a class="font-semibold" href={currentPage.url}>{currentPage.title}</a>
+</span>
