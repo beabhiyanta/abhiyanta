@@ -9,14 +9,14 @@ chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="py-16">
     <label
-      class="block w-fit px-4 mb-2 rounded text-gray-800"
+      class="mb-2 block w-fit rounded px-4 text-gray-800"
       style={`background-color: ${frontmatter.color}`}
     >
       Module {frontmatter.order}
     </label>
     <h1>{frontmatter.title}</h1>
     <div class="grid sm:grid-cols-3">
-      <div class="sm:col-span-2 py-8 flex flex-col gap-8">
+      <div class="flex flex-col gap-8 py-8 sm:col-span-2">
         {
           chapters.map((chapter) => (
             <div>

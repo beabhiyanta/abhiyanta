@@ -8,19 +8,19 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-gray-800 font-semibold;
+  @apply text-gray-800;
 }
 
 .container h1 {
-  @apply text-4xl sm:text-5xl;
+  @apply text-4xl font-semibold sm:text-5xl;
 }
 
 .container h2 {
-  @apply text-2xl sm:text-3xl;
+  @apply text-2xl font-semibold sm:text-3xl;
 }
 
 .container h3 {
-  @apply text-lg sm:text-xl;
+  @apply text-lg font-semibold sm:text-xl;
 }
 
 .container a {

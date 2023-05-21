@@ -8,8 +8,8 @@ const chapters = await Astro.glob("./chapter/*.md");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="py-16 grid sm:grid-cols-3">
-    <div class="sm:col-span-2 flex flex-col gap-4">
+  <div class="grid py-16 sm:grid-cols-3">
+    <div class="flex flex-col gap-4 sm:col-span-2">
       <h1>Free and open engineering education</h1>
       <p>
         This website is an extensive and in-depth collection of engineering lessons created by folks
@@ -22,11 +22,11 @@ const chapters = await Astro.glob("./chapter/*.md");
   </div>
   <div>
     <h2>Modules</h2>
-    <div class="py-4 grid md:grid-cols-3 gap-8">
+    <div class="grid gap-8 py-4 md:grid-cols-3">
       {
         modules.map((module) => (
           <div
-            class="border-t-4 py-2 flex flex-col gap-1"
+            class="flex flex-col gap-1 border-t-4 py-2"
             style={`border-color: ${module.frontmatter.color}`}
           >
             <h3>
