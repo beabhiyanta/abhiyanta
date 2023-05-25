@@ -12,7 +12,7 @@ const getPath = () => {
     module
       ? { url: module.url, title: module.frontmatter.title }
       : { url: "/", title: "Unrecognized" },
-    { url: frontmatter.url, title: frontmatter.title },
+    { url: frontmatter.url, title: `Chapter ${frontmatter.order}` },
   ];
   return path;
 };
