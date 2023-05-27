@@ -34,7 +34,7 @@ chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
         }
       </div>
       <div class="sm:col-span-1">
-        <img src={frontmatter.image} />
+        <img alt={frontmatter.image.alt} src={frontmatter.image.src} />
       </div>
     </div>
   </div>

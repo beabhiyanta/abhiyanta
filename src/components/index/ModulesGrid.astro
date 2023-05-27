@@ -1,0 +1,24 @@
+---
+import ModuleCell from "./ModuleCell.astro";
+const { modules, chapters } = Astro.props;
+const sortedModules = modules.sort((a: any, b: any) =>
+  a.frontmatter.order > b.frontmatter.order ? 1 : -1
+);
+---
+
+<div>
+  <h2>Modules</h2>
+  <div class="grid gap-8 py-4 md:grid-cols-3">
+    {
+      sortedModules.map((module: any) => (
+        <ModuleCell
+          module={module}
+          chapters={chapters.filter(
+            (chapter: any) =>
+              chapter.frontmatter.module === module.frontmatter.title
+          )}
+        />
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,17 @@
+---
+const { module, chapters } = Astro.props;
+---
+
+<div
+  class="flex flex-col gap-1 border-t-4 py-2"
+  style={`border-color: ${module.frontmatter.color}`}
+>
+  <h3>
+    <span>{module.frontmatter.order}.</span>
+    <a href={module.url}>{module.frontmatter.title}</a>
+  </h3>
+  <p class="font-bold">
+    {chapters.length == 1 ? "1 chapter" : `${chapters.length} chapters`}
+  </p>
+  <p>{module.frontmatter.description}</p>
+</div>

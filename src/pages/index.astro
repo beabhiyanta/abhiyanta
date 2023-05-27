@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ModulesGrid from "../components/index/ModulesGrid.astro";
 const pageTitle = "Abhiyanta - Engineering simplified.";
-const image = "";
-let modules = await Astro.glob("./module/*.md");
-modules = modules.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+const image = { alt: "", src: "" };
+const modules = await Astro.glob("./module/*.md");
 const chapters = await Astro.glob("./chapter/*.md");
 ---
 
@@ -18,35 +18,8 @@ const chapters = await Astro.glob("./chapter/*.md");
       </p>
     </div>
     <div class="sm:col-span-1">
-      <img src={image} />
+      <img alt={image.alt} src={image.src} />
     </div>
   </div>
-  <div>
-    <h2>Modules</h2>
-    <div class="grid gap-8 py-4 md:grid-cols-3">
-      {
-        modules.map((module) => (
-          <div
-            class="flex flex-col gap-1 border-t-4 py-2"
-            style={`border-color: ${module.frontmatter.color}`}
-          >
-            <h3>
-              <span>{module.frontmatter.order}.</span>
-              <a href={module.url}>{module.frontmatter.title}</a>
-            </h3>
-            <p class="font-bold">
-              {
-                chapters.filter(
-                  (chapter) =>
-                    chapter.frontmatter.module === module.frontmatter.title
-                ).length
-              }
-              chapters
-            </p>
-            <p>{module.frontmatter.description}</p>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+  <ModulesGrid modules={modules} chapters={chapters} />
 </BaseLayout>
