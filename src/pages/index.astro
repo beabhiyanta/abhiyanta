@@ -12,8 +12,9 @@ const chapters = await Astro.glob("./chapter/*.md");
     <div class="flex flex-col gap-4 sm:col-span-2">
       <h1>Free and open engineering education</h1>
       <p>
-        This website is an extensive and in-depth collection of engineering lessons created by folks
-        at Abhiyanta. It is openly accessible to everyone.
+        This website is an extensive and in-depth collection of engineering
+        lessons created by folks at Abhiyanta. It is openly accessible to
+        everyone.
       </p>
     </div>
     <div class="sm:col-span-1">
@@ -33,10 +34,11 @@ const chapters = await Astro.glob("./chapter/*.md");
               <span>{module.frontmatter.order}.</span>
               <a href={module.url}>{module.frontmatter.title}</a>
             </h3>
-            <p class="font-semibold">
+            <p class="font-bold">
               {
                 chapters.filter(
-                  (chapter) => chapter.frontmatter.module === module.frontmatter.title
+                  (chapter) =>
+                    chapter.frontmatter.module === module.frontmatter.title
                 ).length
               }
               chapters

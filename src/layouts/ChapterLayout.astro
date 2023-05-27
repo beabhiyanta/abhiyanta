@@ -3,10 +3,14 @@ import Breadcrumb from "../components/Breadcrumb.astro";
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 let chapters = await Astro.glob("../pages/chapter/*.md");
-chapters = chapters.filter((chapter) => chapter.frontmatter.module === frontmatter.module);
+chapters = chapters.filter(
+  (chapter) => chapter.frontmatter.module === frontmatter.module
+);
 chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 const modules = await Astro.glob("../pages/module/*.md");
-const module = modules.find((module) => module.frontmatter.title === frontmatter.module);
+const module = modules.find(
+  (module) => module.frontmatter.title === frontmatter.module
+);
 const getPath = () => {
   const path = [
     module
@@ -23,7 +27,9 @@ const getPath = () => {
     <div class="mb-2">
       <label
         class="mr-1 inline-block rounded px-4 text-gray-800"
-        style={`background-color: ${module ? module.frontmatter.color : "#f00"}`}
+        style={`background-color: ${
+          module ? module.frontmatter.color : "#f00"
+        }`}
       >
         Module {module ? module.frontmatter.order : "?"}
       </label>
@@ -39,7 +45,7 @@ const getPath = () => {
                 <a
                   class={
                     chapter.frontmatter.title === frontmatter.title
-                      ? "font-semibold text-blue-600"
+                      ? "font-bold text-blue-600"
                       : ""
                   }
                   href={chapter.url}

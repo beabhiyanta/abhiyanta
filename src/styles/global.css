@@ -12,15 +12,15 @@ h6 {
 }
 
 .container h1 {
-  @apply text-4xl font-semibold sm:text-5xl;
+  @apply text-4xl font-bold sm:text-5xl;
 }
 
 .container h2 {
-  @apply text-2xl font-semibold sm:text-3xl;
+  @apply text-2xl font-bold sm:text-3xl;
 }
 
 .container h3 {
-  @apply text-lg font-semibold sm:text-xl;
+  @apply text-lg font-bold sm:text-xl;
 }
 
 .container a {
