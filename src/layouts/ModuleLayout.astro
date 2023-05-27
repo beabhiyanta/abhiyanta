@@ -2,7 +2,9 @@
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 let chapters = await Astro.glob("../pages/chapter/*.md");
-chapters = chapters.filter((chapter) => chapter.frontmatter.module === frontmatter.title);
+chapters = chapters.filter(
+  (chapter) => chapter.frontmatter.module === frontmatter.title
+);
 chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 ---
 
