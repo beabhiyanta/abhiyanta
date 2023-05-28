@@ -29,7 +29,7 @@ const chapters = await getChapters(frontmatter.module);
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="py-16">
-    <div class="mb-2">
+    <div>
       <ModuleLabel module={module} />
       <Breadcrumb path={getPath(module)} />
     </div>
