@@ -1,17 +1,20 @@
 ---
-import Breadcrumb from "../components/Breadcrumb.astro";
 import BaseLayout from "./BaseLayout.astro";
+import ModuleLabel from "../components/ModuleLabel.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import SidebarNav from "../components/chapter/SidebarNav.astro";
 const { frontmatter } = Astro.props;
-let chapters = await Astro.glob("../pages/chapter/*.md");
-chapters = chapters.filter(
-  (chapter) => chapter.frontmatter.module === frontmatter.module
-);
-chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
-const modules = await Astro.glob("../pages/module/*.md");
-const module = modules.find(
-  (module) => module.frontmatter.title === frontmatter.module
-);
-const getPath = () => {
+const getModule = async (title: string) => {
+  const modules = await Astro.glob("../pages/module/*.md");
+  return modules.find((module) => module.frontmatter.title === title);
+};
+const getChapters = async (title: string) => {
+  let chapters = await Astro.glob("../pages/chapter/*.md");
+  chapters = chapters.filter((chapter) => chapter.frontmatter.module === title);
+  chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+  return chapters;
+};
+const getPath = (module: any) => {
   const path = [
     module
       ? { url: module.url, title: module.frontmatter.title }
@@ -20,43 +23,19 @@ const getPath = () => {
   ];
   return path;
 };
+const module = await getModule(frontmatter.module);
+const chapters = await getChapters(frontmatter.module);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="py-16">
     <div class="mb-2">
-      <label
-        class="mr-1 inline-block rounded px-4 text-gray-800"
-        style={`background-color: ${
-          module ? module.frontmatter.color : "#f00"
-        }`}
-      >
-        Module {module ? module.frontmatter.order : "?"}
-      </label>
-      <Breadcrumb path={getPath()} />
+      <ModuleLabel module={module} />
+      <Breadcrumb path={getPath(module)} />
     </div>
     <h1>{frontmatter.title}</h1>
     <div class="grid gap-8 py-8 md:grid-cols-6 md:py-16">
-      <aside class="rounded border p-4 md:col-span-2">
-        <ol class="list-inside list-decimal">
-          {
-            chapters.map((chapter) => (
-              <li class="text-gray-800">
-                <a
-                  class={
-                    chapter.frontmatter.title === frontmatter.title
-                      ? "font-bold text-blue-600"
-                      : ""
-                  }
-                  href={chapter.url}
-                >
-                  {chapter.frontmatter.title}
-                </a>
-              </li>
-            ))
-          }
-        </ol>
-      </aside>
+      <SidebarNav chapters={chapters} chapterTitle={frontmatter.title} />
       <div class="flex flex-col gap-1 md:col-span-4">
         <slot />
       </div>

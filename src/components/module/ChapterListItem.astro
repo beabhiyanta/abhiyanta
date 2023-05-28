@@ -1,0 +1,11 @@
+---
+const { chapter } = Astro.props;
+---
+
+<div>
+  <h3>
+    <span>{chapter.frontmatter.order}.</span>
+    <a href={chapter.url}>{chapter.frontmatter.title}</a>
+  </h3>
+  <p>{chapter.frontmatter.description}</p>
+</div>
