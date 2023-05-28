@@ -1,8 +1,4 @@
-lockfileVersion: '6.1'
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
+lockfileVersion: '6.0'
 
 dependencies:
   '@astrojs/tailwind':
@@ -17,6 +13,9 @@ dependencies:
   astro-icon:
     specifier: ^0.8.0
     version: 0.8.0
+  react:
+    specifier: ^18.2.0
+    version: 18.2.0
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -40,6 +39,9 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
     version: 0.3.0(prettier-plugin-astro@0.9.1)(prettier@2.8.8)
+  typescript:
+    specifier: ^5.0.4
+    version: 5.0.4
 
 packages:
 
@@ -4434,3 +4436,7 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
