@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://abhiyanta.vercel.app",
   output: "server",
   adapter: vercel(),
   integrations: [tailwind(), sitemap()],
