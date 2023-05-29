@@ -17,7 +17,7 @@ const module = await getModule(frontmatter.title);
 const chapters = await getChapters(frontmatter.title);
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout title={frontmatter.title} metaDescription={frontmatter.description}>
   <div class="py-16">
     <ModuleLabel module={module} />
     <h1>{frontmatter.title}</h1>

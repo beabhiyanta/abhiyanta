@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ModulesGrid from "../components/index/ModulesGrid.astro";
-const pageTitle = "Abhiyanta - Engineering simplified.";
+const title = "Abhiyanta - Engineering simplified.";
+const metaDescription =
+  "Free and open engineering education. This website is an extensive and in-depth collection of engineering lessons created by folks at Abhiyanta. It is openly accessible to everyone.";
 const image = { alt: "", src: "" };
 const modules = await Astro.glob("./module/*.md");
 const chapters = await Astro.glob("./chapter/*.md");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} metaDescription={metaDescription}>
   <div class="grid py-16 sm:grid-cols-3">
     <div class="flex flex-col gap-2 sm:col-span-2">
       <h1>Free and open engineering education</h1>
