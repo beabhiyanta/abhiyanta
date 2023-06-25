@@ -1,4 +1,6 @@
-# This file is the top-most EditorConfig file
+# https://editorconfig.org/
+
+# This file is the top-most EditorConfig file.
 root = true
 
 # All Files
@@ -14,7 +16,7 @@ trim_trailing_whitespace = true
 indent_size = 2
 
 # YAML Files
-[*.yaml]
+[*.{yml,yaml}]
 indent_size = 2
 
 # Markdown Files
