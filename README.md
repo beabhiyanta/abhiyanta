@@ -1,3 +1,3 @@
 # Abhiyanta
 
-Free and open engineering education.
+Free and Open Engineering Education
