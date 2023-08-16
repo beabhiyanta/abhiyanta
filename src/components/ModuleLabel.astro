@@ -4,9 +4,7 @@ const { module } = Astro.props;
 
 <label
   class="mr-1 inline-block rounded px-4 text-gray-800"
-  style={`background-color: ${module ? module.frontmatter.color : "#f00"}`}
+  style={`background-color: ${module.frontmatter.color ?? "#f00"}`}
 >
-  Module {
-    module ? (module.frontmatter.order ? module.frontmatter.order : "?") : "?"
-  }
+  Module {module.frontmatter.order ?? "?"}
 </label>

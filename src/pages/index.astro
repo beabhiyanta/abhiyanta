@@ -6,7 +6,6 @@ const metaDescription =
   "Free and open engineering education. This website is an extensive and in-depth collection of engineering lessons created by Abhiyanta. It is openly accessible to everyone.";
 const image = { alt: "", src: "" };
 const modules = await Astro.glob("./module/*.md");
-const chapters = await Astro.glob("./chapter/*.md");
 ---
 
 <BaseLayout title={title} metaDescription={metaDescription}>
@@ -22,5 +21,5 @@ const chapters = await Astro.glob("./chapter/*.md");
       <img alt={image.alt} src={image.src} />
     </div>
   </div>
-  <ModulesGrid modules={modules} chapters={chapters} />
+  <ModulesGrid modules={modules} />
 </BaseLayout>
