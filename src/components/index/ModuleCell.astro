@@ -3,9 +3,7 @@ const { module } = Astro.props;
 const getChapters = async (title: string) => {
   let chapters = await Astro.glob("../../pages/chapter/*.md");
   chapters = chapters.filter((chapter) => chapter.frontmatter.module === title);
-  chapters = chapters.sort((a, b) =>
-    a.frontmatter.order > b.frontmatter.order ? 1 : -1
-  );
+  chapters = chapters.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
   return chapters;
 };
 const chapters = await getChapters(module.frontmatter.title);

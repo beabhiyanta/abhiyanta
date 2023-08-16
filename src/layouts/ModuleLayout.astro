@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import ModuleLabel from "../components/ModuleLabel.astro";
 import ChaptersList from "../components/module/ChaptersList.astro";
+import PostsList from "../components/module/PostsList.astro";
 const { frontmatter } = Astro.props;
 const getModule = async (title: string) => {
   const modules = await Astro.glob("../pages/module/*.md");
@@ -15,8 +16,14 @@ const getChapters = async (title: string) => {
   );
   return chapters;
 };
+const getPosts = async (title: string) => {
+  let posts = await Astro.glob("../pages/post/*.md");
+  posts = posts.filter((post) => post.frontmatter.tags.includes(title));
+  return posts;
+};
 const module = await getModule(frontmatter.title);
 const chapters = await getChapters(frontmatter.title);
+const posts = await getPosts(frontmatter.title);
 ---
 
 <BaseLayout title={frontmatter.title} metaDescription={frontmatter.description}>
@@ -24,7 +31,8 @@ const chapters = await getChapters(frontmatter.title);
     <ModuleLabel module={module} />
     <h1>{frontmatter.title}</h1>
     <div class="grid sm:grid-cols-3">
-      <ChaptersList chapters={chapters} />
+      {chapters.length ? <ChaptersList chapters={chapters} /> : null}
+      {posts.length ? <PostsList posts={posts} /> : null}
       <div class="sm:col-span-1">
         <img alt={frontmatter.image.alt} src={frontmatter.image.src} />
       </div>
